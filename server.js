@@ -30,7 +30,7 @@ app.use(methodOverride());      // simulate DELETE and PUT
 // });
 
 app.get('/', function (req, res) {
-    res.send('hello world2')
+    res.send('hello world3')
 })
 
 app.post('/addProduct', function (req, res){
