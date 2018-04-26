@@ -5,7 +5,9 @@
 // const storage = new Storage();
 const Datastore = require("@google-cloud/datastore");
 const datastore = new Datastore({
-    projectId: "hack2018-1524731398666"
+    projectId: "hack2018-1524731398666",
+    keyFilename: "hackathon-7818f5f968e4.json"
+
 })
 exports.datastore = datastore
 
