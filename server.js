@@ -33,10 +33,11 @@ app.get('/', function (req, res) {
     res.send('hello world3')
 })
 
-app.post('/addProduct', function (req, res){
+app.post('/addProduct', async function (req, res){
     console.log(req.body.name)
     let body = req.body
-    res.send(product.addProduct(body.name, body.desc, body.image, body.userId))
+    let id = await product.addProduct(body.name, body.desc, body.image, body.userId)
+    res.send(id)
 })
 
 
