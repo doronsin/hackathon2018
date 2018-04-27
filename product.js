@@ -28,6 +28,7 @@ async function getAllProducts(){
 }
 
 async function addLike(productId, userId){
+    console.log(productId, userId)
     let x = await server.datastore.get(server.datastore.key([kinds.product, parseInt(productId)]))
     x = x[0]
     if (x.likes.indexOf(userId)<0) {
