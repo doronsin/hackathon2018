@@ -36,9 +36,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/getAllProducts', async function(req,res){
-    console.log("=======================================")
     let productList = await product.getAllProducts() 
-    console.log(productList)
     res.send(productList[0])
 })
 
@@ -50,7 +48,6 @@ app.post('/addLike',async function(req,res){
 
 
 app.post('/addProduct', async function (req, res){
-    console.log(req.body.name)
     let body = req.body
     let id = await product.addProduct(body.name, body.desc, body.image, body.userId)
     res.send(id)
