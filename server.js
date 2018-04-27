@@ -3,12 +3,14 @@
 
 // // Creates a client
 // const storage = new Storage();
+const cors = require("cors")
 const Datastore = require("@google-cloud/datastore");
 const datastore = new Datastore({
     projectId: "hack2018-1524731398666",
     keyFilename: "hack2018-80d90da6fa29.json"
 
 })
+
 exports.datastore = datastore
 
 
@@ -17,7 +19,7 @@ var express = require('express'),
     methodOverride = require('method-override'),
     sessions = require('./routes/sessions'),
     app = express();
-
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
