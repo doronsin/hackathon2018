@@ -35,6 +35,15 @@ app.get('/', function (req, res) {
     res.send('hello world3')
 })
 
+app.get('/getAllProducts', async function(req,res){
+    console.log("=======================================")
+    let productList = await product.getAllProducts() 
+    console.log(productList)
+    res.send(productList[0])
+})
+
+
+
 app.post('/addProduct', async function (req, res){
     console.log(req.body.name)
     let body = req.body

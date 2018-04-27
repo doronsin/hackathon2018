@@ -17,6 +17,11 @@ async function addProduct(name, desc, image, userId){
     return key.id
 }
 
+async function getAllProducts(){
+    const query = server.datastore.createQuery(kinds.product)
+    return await server.datastore.runQuery(query)
+}
+
 async function addLike(body){
     let x = await server.datastore.get(server.datastore.key([kinds.product, parseInt(body.productId)]))
     console.log(x.likes)
@@ -46,4 +51,5 @@ function checkLike(body){
 module.exports = {
     addProduct : addProduct,
     addLike : addLike,
+    getAllProducts: getAllProducts
 }
