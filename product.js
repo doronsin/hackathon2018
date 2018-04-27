@@ -4,8 +4,7 @@ var server = require('./server')
 async function addProduct(name, desc, image, userId){
     let key = server.datastore.key(kinds.product)
     let data = {
-        "productId": key.id,
-        "name": key.id,
+        name,
         desc,
         image,
         userId,  
@@ -20,7 +19,12 @@ async function addProduct(name, desc, image, userId){
 
 async function getAllProducts(){
     const query = server.datastore.createQuery(kinds.product)
-    return await server.datastore.runQuery(query)
+    let products = await server.datastore.runQuery(query)
+    console.log(products)
+    return products[0].map(product => {
+        product.id = product[server.datastore.KEY].id
+        return product
+    })
 }
 
 async function addLike(body){

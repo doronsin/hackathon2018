@@ -43,7 +43,7 @@ app.get('/getAllProducts', async function(req,res){
 })
 
 
-app.post('/addLikeNcheckMatch',async function(req,res){
+app.post('/addLike',async function(req,res){
     let isMatch = await product.addLike(req.body)
     res.send(isMatch)
 })
