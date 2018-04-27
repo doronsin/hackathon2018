@@ -5,7 +5,7 @@ async function addProduct(name, desc, image, userId){
     let key = server.datastore.key(kinds.product)
     let data = {
         "productId": key.id,
-        name,
+        "name": key.id,
         desc,
         image,
         userId,  
