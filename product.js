@@ -27,16 +27,16 @@ async function getAllProducts(){
     return products
 }
 
-async function addLike(body){
-    let x = await server.datastore.get(server.datastore.key([kinds.product, parseInt(body.productId)]))
+async function addLike(productId, userId){
+    let x = await server.datastore.get(server.datastore.key([kinds.product, parseInt(productId)]))
     x = x[0]
-    if (x.likes.indexOf(body.userId)<0) {
-        x.likes.push(body.userId)
+    if (x.likes.indexOf(userId)<0) {
+        x.likes.push(userId)
         server.datastore.save(x)
     }
     ownerProductId = x.userId
     // ownerProduct =  await server.datastore.get(server.datastore.key([kinds.user, parseInt(ownerProductId)]))
-    return await checkMatch(body.userId, ownerProductId)
+    return await checkMatch(userId, ownerProductId)
 }
 
 async function checkMatch(userId,ownerProductId){

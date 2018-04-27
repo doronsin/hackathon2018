@@ -42,14 +42,14 @@ app.get('/getAllProducts', async function(req,res){
 
 
 app.post('/addLike',async function(req,res){
-    let isMatch = await product.addLike(req.params.json)
+    let isMatch = await product.addLike(req.query.productId, req.query.userId)
     res.send(isMatch)
 })
 
 
 app.post('/addProduct', async function (req, res){
     let body = req.params.json
-    let id = await product.addProduct(body.name, body.desc, body.image, body.userId)
+    let id = await product.addProduct(req.query.name, req.query.desc, req.query.image, req.query.userId)
     res.send(id)
 })
 
