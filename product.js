@@ -40,15 +40,18 @@ async function addLike(body){
 }
 
 async function checkMatch(userId,ownerProductId){
-    const query = server.datastore.createQuery(kinds.product).filter('userId', '=', parseInt(userId))
+    const query = server.datastore.createQuery(kinds.product).filter('userId', '=', userId)
     productsUser = await server.datastore.runQuery(query)
     productsUser = productsUser[0]
-    productsUser.forEach(element => {
-        console.log(element)
-        if (element.likes.contains(parseInt(ownerProductId))){
-            return true
-        }     
-    });
+    var i
+    for (i=0; i< productsUser.length; i++) {
+        var j;
+        for (j=0; j< productsUser[i].likes.length; j++) {
+            if (parseInt(productsUser[i].likes[j]) == parseInt(ownerProductId)) {
+                return true
+            }
+        }
+    }
     return false
 }
 
