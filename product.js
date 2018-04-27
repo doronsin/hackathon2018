@@ -4,7 +4,7 @@ var server = require('./server')
 async function addProduct(name, desc, image, userId){
     let key = server.datastore.key(kinds.product)
     let data = {
-        "id": key.id,
+        "productId": key.id,
         name,
         desc,
         image,
